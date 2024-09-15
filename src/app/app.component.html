@@ -1,45 +1,17 @@
 <div class="container">
-  <form class="row mt-3 gx-3 gy-2 align-items-center justify-content-center">
-    <div class="col-sm-6">
-      <label class="visually-hidden" for="specificSizeInputName"></label>
-      <input
-        type="text"
-        name="new-wish-text"
-        class="form-control"
-        [(ngModel)]="newWishText"
-      />
-    </div>
-    <div class="col-auto">
-      <button
-        (click)="$event.preventDefault(); addNewWish()"
-        type="submit"
-        class="btn btn-primary"
-      >
-        Add Wish
-      </button>
-    </div>
-  </form>
+  <add-wish-form (addWish)="items.push($event)"> </add-wish-form>
+
   <div class="row mt-3">
-    <div *ngIf="items.length == 0; else showItems">
-      There are no wishes to display.
+    <div class="col-sm-2">
+      <select class="form-select" [(ngModel)]="listFilter">
+        <option value="0">All</option>
+        <option value="1">Unfulfilled</option>
+        <option value="2">Fulfilled</option>
+      </select>
     </div>
-    <ng-template #showItems>
-      <ul class="wish-list">
-        <li *ngFor="let item of items; index as i">
-          <div class="form-check">
-            <label class="form-check-label">
-              <input
-                class="checkbox"
-                [checked]="item.isComplete"
-                type="checkbox"
-                [attr.data-index]="i"
-                (click)="toggleItem(item)"
-              />{{ item.wishText }}
-              <!-- Accessing wishText of each WishItem object -->
-            </label>
-          </div>
-        </li>
-      </ul>
-    </ng-template>
+  </div>
+
+  <div class="row mt-3">
+    <wish-list [wishes]="visibleItem"> </wish-list>
   </div>
 </div>
