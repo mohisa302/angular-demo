@@ -4,7 +4,8 @@ import { WishItem } from '../shared/models/wishItem';
 import { CommonModule } from '@angular/common'; // <-- Import CommonModule
 import { FormsModule } from '@angular/forms';
 import { WishListComponent } from './wish-list/wish-list.component';
-import { AddWishFormComponent } from './add-wish-form/add-wish-form.component'; // <-- Import WishListComponent
+import { AddWishFormComponent } from './add-wish-form/add-wish-form.component';
+import { WishFilterComponent } from './wish-filter/wish-filter.component'; // <-- Import WishListComponent
 
 @Component({
   selector: 'app-root',
@@ -15,6 +16,7 @@ import { AddWishFormComponent } from './add-wish-form/add-wish-form.component'; 
     CommonModule,
     FormsModule,
     AddWishFormComponent,
+    WishFilterComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
@@ -26,16 +28,9 @@ export class AppComponent {
     new WishItem('Learn Languages', false),
   ];
 
-  filters = [
-    (item: WishItem) => item,
-    (item: WishItem) => !item.isComplete,
-    (item: WishItem) => item.isComplete,
-  ];
+  filter: any = () => {};
 
   get visibleItem(): WishItem[] {
-    return this.items.filter(this.filters[this.listFilter]);
+    return this.items.filter(this.filter);
   }
-
-  listFilter: any = '0';
-  title = 'angular-demo';
 }
