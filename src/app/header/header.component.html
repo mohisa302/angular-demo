@@ -12,8 +12,13 @@
         </div>
         <div class="desktop_menu" [class.mobile_menu]="menuValue">
           <ul>
-            <li (click)="closeMenu()">Home</li>
-            <li (click)="closeMenu()">Wishes</li>
+            <!-- Use routerLink for navigation -->
+            <li (click)="closeMenu()">
+              <a routerLink="/">Home</a>
+            </li>
+            <li (click)="closeMenu()">
+              <a routerLink="/wish">Wishes</a>
+            </li>
           </ul>
         </div>
       </div>

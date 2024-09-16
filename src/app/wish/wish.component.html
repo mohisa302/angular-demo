@@ -1,0 +1,22 @@
+<div class="container text-center">
+  <!-- Center the form -->
+  <div class="row justify-content-center mt-3">
+    <div class="col-md-6">
+      <add-wish-form (addWish)="items.push($event)"> </add-wish-form>
+    </div>
+  </div>
+
+  <!-- Center the filter -->
+  <div class="row justify-content-center mt-3">
+    <div class="col-md-6">
+      <wish-filter [(filter)]="filter"> </wish-filter>
+    </div>
+  </div>
+
+  <!-- Center the wish list -->
+  <div class="row justify-content-center mt-3">
+    <div class="col-md-6">
+      <wish-list [wishes]="items.filter(filter)"> </wish-list>
+    </div>
+  </div>
+</div>

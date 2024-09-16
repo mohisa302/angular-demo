@@ -32,6 +32,10 @@ header {
 .menu-icon {
   display: none;
 }
+a {
+  color: white; /* Or any color of your choice */
+  text-decoration: none; /* Optional to remove underline */
+}
 
 @media screen and (min-width: 128px) and (max-width: 900px) {
   .desktop_menu {
